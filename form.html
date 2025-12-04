@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction by Hredoy Majumder</title>
+    <style>
+        body{font-family: Arial; background: #f2f2f2; padding: 40px; }
+        .container{background: white; padding: 20px; width: 400px; margin: auto; border-radius: 10px;}
+        input, select{ width:100%; padding: 8px; margin: 6px 0;}
+        button{padding: 10px; width: 100%; background: blue; color:white; border: none;}
+        .result{margin-top: 20px; padding: 10px; background: #eee; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Diabetes Prediction by Hredoy Majumder</h2>
+
+    <form method="POST" action="/predict">
+        <lebel>Gender:</lebel>
+        <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <lebel>Age:</lebel>
+        <input type="number" step="0.1" name="age"  required>
+
+        <lebel>Hypertension:</lebel>
+        <select name="hypertension">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <lebel>Heart Disease:</lebel>
+        <select name="heart_disease">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <lebel>Smoking History:</lebel>
+        <select name="smoking_history">
+            <option>never</option>
+            <option>former</option>
+            <option>current</option>
+            <option>not current</option>
+            <option>ever</option>
+        </select>
+
+        <label>BMI:</label>
+        <input type="number" step="0.1" name="bmi" required>
+
+        <label>HbA1c Level:</label>
+        <input type="number" step="0.1" name="hba1c" required>
+
+        <label>Blood Glucose Level:</label>
+        <input type="number" step="1" name="blood_glucose" required>
+
+        <button type="submit">predict</button>
+    </form>
+
+    {%if prediction %}
+    <div class="result">
+        <h3>{{prediction}}</h3>
+    </div>
+    {% endif %}
+</div>
+    
+</body>
+</html>
